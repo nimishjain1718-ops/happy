@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy New Year, 2026</title>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1f1c2c, #4b3b6e, #928dab);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        canvas {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero {
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 2s ease;
+            text-align: center;
+        }
+
+        .names {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            opacity: .95;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            margin: 0 auto;
+        }
+
+        .heart {
+            font-size: 3rem;
+            margin: 15px 0;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            font-size: 1.2rem;
+        }
+
+        .countdown div {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px 18px;
+            border-radius: 15px;
+            min-width: 70px;
+        }
+
+        section {
+            padding: 70px 20px;
+            max-width: 1100px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+            display: none;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+        }
+
+        .slideshow {
+            max-width: 720px;
+            margin: auto;
+        }
+
+        .slide {
+            display: none;
+        }
+
+        .slide img {
+            width: 100%;
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .35);
+        }
+
+        .message {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: 30px;
+            padding: 45px 30px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            opacity: .95;
+            position: relative;
+            z-index: 2;
+            display: none;
+        }
+
+        .final-line {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            margin-top: 25px;
+        }
+
+        .cat-float {
+            position: fixed;
+            width: 200px;
+            opacity: 1;
+            animation: floatCats 28s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1)
+            }
+
+            50% {
+                transform: scale(1.3)
+            }
+        }
+
+        @keyframes floatCats {
+            from {
+                transform: translateY(110vh)
+            }
+
+            to {
+                transform: translateY(-130vh)
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <img class="cat-float" style="left:10%" src="images/cat1.png" alt="cat">
+    <img class="cat-float" style="left:75%;animation-delay:10s" src="images/cat2.png" alt="cat">
+
+    <header>
+        <canvas id="fireworks"></canvas>
+        <div class="hero">
+            <div class="names">Name ❤️ Name</div>
+            <h1>🎉 New Year 2026 🎉</h1>
+            <div class="heart">❤️</div>
+            <strong>
+                <p>“The moment our next chapter begins.”</p>
+            </strong>
+
+            <div class="countdown" id="countdown">
+                <div><span id="days">0</span><br>Days</div>
+                <div><span id="hours">0</span><br>Hours</div>
+                <div><span id="minutes">0</span><br>Minutes</div>
+                <div><span id="seconds">0</span><br>Seconds</div>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <h2>Us 💑</h2>
+        <div class="slideshow">
+            <div class="slide"><img src="images/us1.png"></div>
+            <div class="slide"><img src="images/us2.png"></div>
+            <div class="slide"><img src="images/us3.png"></div>
+            <div class="slide"><img src="images/us4.png"></div>
+            <div class="slide"><img src="images/us5.png"></div>
+            <div class="slide"><img src="images/us6.png"></div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Our Bucket List 📝</h2>
+        <div class="message">
+            <ul style="text-align:left;max-width:700px;margin:auto;line-height:2;font-size:1.1rem;">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <div class="message">
+            <h2>My Message 🫶</h2>
+            <p style="font-size:1.1rem;line-height:1.8;">
+                message</strong>
+            </p>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <p style="font-family:'Dancing Script',cursive;font-size:1.4rem;">With all my love,<br><strong>Name ✨</strong>
+        </p>
+        <div class="final-line">I love you</div>
+    </footer>
+
+    <script>
+
+        const canvas = document.getElementById('fireworks');
+        const ctx = canvas.getContext('2d');
+        function resize() { canvas.width = innerWidth; canvas.height = innerHeight; } resize();
+        window.addEventListener('resize', resize);
+
+        let fireworksInterval = null;
+        function firework() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < 50; i++) {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const angle = Math.random() * 2 * Math.PI;
+                const r = Math.random() * 180;
+                ctx.fillStyle = 'rgba(255,200,255,0.8)';
+                ctx.beginPath();
+                ctx.arc(x + Math.cos(angle) * r, y + Math.sin(angle) * r, 2, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        function startFireworks() {
+            if (fireworksInterval === null) {
+                fireworksInterval = setInterval(firework, 1200);
+            }
+        }
+
+
+        const PREVIEW_MODE = false; // set to false for real countdown
+        const target = new Date('January 1, 2026 00:00:00').getTime();
+
+        if (PREVIEW_MODE) {
+            document.querySelectorAll('section').forEach(s => s.style.display = 'block');
+            document.getElementById('footer').style.display = 'block';
+            document.getElementById('countdown').innerHTML = '<h2>🎆 Happy New Year 🎆</h2>';
+            startFireworks();
+        } else {
+            const timer = setInterval(() => {
+                const now = new Date().getTime();
+                const diff = target - now;
+
+                if (diff <= 0) {
+                    clearInterval(timer);
+                    document.querySelectorAll('section').forEach(s => s.style.display = 'block');
+                    document.getElementById('footer').style.display = 'block';
+                    document.getElementById('countdown').innerHTML = '<h2>🎆 Happy New Year 2026 🎆</h2>';
+                    startFireworks();
+                    return;
+                }
+
+                document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000);
+            }, 1000);
+        }
+
+
+        let idx = 0;
+        const slides = document.getElementsByClassName('slide');
+        function showSlides() {
+            for (let i = 0; i < slides.length; i++)slides[i].style.display = 'none';
+            idx++; if (idx > slides.length) idx = 1;
+            slides[idx - 1].style.display = 'block';
+            setTimeout(showSlides, 3000);
+        }
+        showSlides();
+    </script>
+
+</body>
+
+</html>
